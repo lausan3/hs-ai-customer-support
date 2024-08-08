@@ -9,6 +9,9 @@ export default function Chat() {
 
   const [message, setMessage] = useState('');
 
+
+  // RAG: Give more context to the LLM for better search results.
+  // Before sending the LLM a message, query a vector database for relevant embeddings related to the message.
   const sendMessage = async () => {
     setMessages([
       ...messages,
@@ -61,6 +64,17 @@ export default function Chat() {
         return reader.read().then(processText);
       })
     });
+  }
+
+  const testEmbeddings = async () => {
+    setMessage('');
+
+    const response = await fetch("/api/rag", {
+      method: "POST",
+      body: JSON.stringify({ text: [message] })
+    });
+
+    console.log(response);
   }
 
   return (
