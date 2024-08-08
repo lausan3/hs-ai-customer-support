@@ -70,7 +70,7 @@ export default function Chat() {
           {
             messages.map((message, index) => {
               return  (
-                <div key={index} className={`flex ${message.role === 'assistant' ? 'flex-start' : 'flex-end'}`}>
+                <div key={index} className={`flex ${message.role === 'assistant' ? 'self-start' : 'self-end'}`}>
                   <div 
                     className=
                     {`${message.role === 'assistant' ? 'bg-blue-500' : 'bg-gray-400'} text-white rounded-2xl p-3`}
